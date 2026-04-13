@@ -8,18 +8,16 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
 
-      - name: Restore dependencies
-        run: dotnet restore
+      - name: Restore NuGet packages
+        run: nuget restore CybersecurityChatbot.sln
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: msbuild CybersecurityChatbot.sln /p:Configuration=Release
