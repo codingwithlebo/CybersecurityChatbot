@@ -11,16 +11,16 @@ namespace CybersecurityChatbot
         public static void PlayGreeting()
         {
             // Fixed: Looks for greeting.wav in the same folder as the .exe
-            string audioPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "greeting.wav");
+            string audioPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "greeting.wav.wav");
 
             if (!File.Exists(audioPath))
 
 
-                
-                {
-                    Console.WriteLine("[Voice greeting not found — skipping]");
-                    return;
-                }
+
+            {
+                Console.WriteLine("[Voice greeting not found — skipping]");
+                return;
+            }
 
             try
             {
