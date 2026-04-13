@@ -5,18 +5,22 @@ using System.Media;
 
 namespace CybersecurityChatbot
 {
-    
-        public static class AudioGreeting
+
+    public static class AudioGreeting
+    {
+        public static void PlayGreeting()
         {
-            public static void PlayGreeting()
-            {
-            string audioPath = @"C:\Users\Student\source\repos\CybersecurityChatbot\bin\Debug\greeting.wav.wav";
+            // Fixed: Looks for greeting.wav in the same folder as the .exe
+            string audioPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "greeting.wav");
 
             if (!File.Exists(audioPath))
-            {
-                Console.WriteLine("[Voice greeting not found — skipping]");
-                return;
-            }
+
+
+                
+                {
+                    Console.WriteLine("[Voice greeting not found — skipping]");
+                    return;
+                }
 
             try
             {
