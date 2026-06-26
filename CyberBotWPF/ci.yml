@@ -1,0 +1,35 @@
+f5f5rf5name: CI — Build CyberBotWPF
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore CyberBotWPF/CyberBotWPF.csproj
+
+      - name: Build
+        run: dotnet build CyberBotWPF/CyberBotWPF.csproj -c Release --no-restore
+
+      - name: Publish
+        run: dotnet publish CyberBotWPF/CyberBotWPF.csproj -c Release -o publish --no-restore
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CyberBotWPF-Release
+          path: publish/

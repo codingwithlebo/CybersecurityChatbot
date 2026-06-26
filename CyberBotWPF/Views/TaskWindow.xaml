@@ -1,0 +1,119 @@
+﻿<Window x:Class="CyberBotWPF.Views.TaskWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="📋 Task Assistant"
+        Height="600" Width="700"
+        WindowStartupLocation="CenterScreen"
+        Background="#0A0E1A">
+    <Grid Margin="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Text="📋 CYBERSECURITY TASK ASSISTANT"
+                   FontSize="20" FontWeight="Bold"
+                   Foreground="#00D4FF"
+                   FontFamily="Consolas"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+        <Border Grid.Row="1"
+                Background="#0F1628"
+                BorderBrush="#1E3A5F"
+                BorderThickness="1"
+                CornerRadius="10"
+                Padding="20"
+                Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="Add New Task"
+                           Foreground="#00FF88"
+                           FontWeight="Bold"
+                           FontSize="13"
+                           Margin="0,0,0,10"/>
+                <TextBlock Text="Task Title:"
+                           Foreground="#7A9BB5"
+                           FontSize="12"
+                           Margin="0,0,0,5"/>
+                <TextBox x:Name="TitleBox"
+                         Background="#131D35"
+                         Foreground="#E8F4FD"
+                         BorderBrush="#1E3A5F"
+                         BorderThickness="1"
+                         Padding="10,8"
+                         FontSize="13"
+                         Margin="0,0,0,10"/>
+                <TextBlock Text="Description (optional):"
+                           Foreground="#7A9BB5"
+                           FontSize="12"
+                           Margin="0,0,0,5"/>
+                <TextBox x:Name="DescBox"
+                         Background="#131D35"
+                         Foreground="#E8F4FD"
+                         BorderBrush="#1E3A5F"
+                         BorderThickness="1"
+                         Padding="10,8"
+                         FontSize="13"
+                         Margin="0,0,0,10"/>
+                <TextBlock Text="Reminder Date (optional):"
+                           Foreground="#7A9BB5"
+                           FontSize="12"
+                           Margin="0,0,0,5"/>
+                <DatePicker x:Name="ReminderPicker"
+                            Margin="0,0,0,15"/>
+                <Button Content="➕ Add Task"
+                        Height="40"
+                        FontSize="13"
+                        FontWeight="Bold"
+                        Foreground="#0A0E1A"
+                        Cursor="Hand"
+                        Click="AddTask_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="#00FF88" CornerRadius="8">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="2"
+                Background="#0F1628"
+                BorderBrush="#1E3A5F"
+                BorderThickness="1"
+                CornerRadius="10"
+                Padding="20">
+            <StackPanel>
+                <TextBlock Text="Your Tasks"
+                           Foreground="#00FF88"
+                           FontWeight="Bold"
+                           FontSize="13"
+                           Margin="0,0,0,10"/>
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              MaxHeight="200">
+                    <ItemsControl x:Name="TasksList"/>
+                </ScrollViewer>
+            </StackPanel>
+        </Border>
+        <Button Grid.Row="3"
+                Content="Close"
+                Height="40"
+                Margin="0,15,0,0"
+                FontSize="13"
+                Foreground="#E8F4FD"
+                Cursor="Hand"
+                Click="Close_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="#1E3A5F" CornerRadius="8">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Window>
